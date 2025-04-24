@@ -105,7 +105,7 @@ ui <- fluidPage(
                        HTML("The information provided on this dashboard is intended for general informational purposes only. It is designed to give an overview of clinical trial opportunities available within the US. While we strive to ensure the accuracy and timeliness of the information, it is important to discuss any clinical trial options with your healthcare provider before making any decisions. Participation in clinical trials is voluntary, and eligibility may vary based on individual health conditions and medical history. Please consult with your medical team for personalized advice regarding clinical trial opportunities. Except for minor geo-coding edits, data presented here is as-is from <a target='_blank' rel='noopener noreferrer' href='http://clinicaltrials.gov'>Clinicaltrials.gov</a>"),
                        HTML("<br>"),
                        HTML("<br>"),
-                       HTML("Data source: <a target='_blank' rel='noopener noreferrer' href='http://clinicaltrials.gov'>Clinicaltrials.gov</a> API via Seattle Children's POSIT CONNECT Server.<br>"),
+                       HTML("Data source: <a target='_blank' rel='noopener noreferrer' href='http://clinicaltrials.gov'>Clinicaltrials.gov</a> API via GitHub-based R scripts.<br>"),
                        HTML("<br>"),
                        HTML("<br>"),
                        HTML("Map provided by <a target='_blank' rel='noopener noreferrer' href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> under their  Creative Commons Attribution-ShareAlike 2.0 license (CC BY-SA 2.0).<br>
