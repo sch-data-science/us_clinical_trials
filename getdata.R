@@ -4,6 +4,11 @@ library(dplyr)
 library(readr)
 library(stringr)
 library(purrr)
+library(tidygeocoder)
+
+
+Sys.setenv(MAPBOX_API_KEY="MAPBOX_API_KEY")
+
 
 data <- list()
 
@@ -106,21 +111,21 @@ finaldata$state <- ifelse(finaldata$state == "Washington" & is.na(finaldata$zip)
 
 #library(tidygeocoder)
 
-#mysilly <- finaldata %>% filter(is.na(geoPoint.lat)==TRUE)
+mysilly <- finaldata %>% filter(is.na(geoPoint.lat)==TRUE)
 
-#sillygeo = tryCatch(geo(address = unique(mysilly$zip),method="mapbox"),error=function(e) {
-#  Sys.sleep(3)
-#  geo(address = unique(mysilly$zip),method="mapbox")
-#})
+sillygeo = tryCatch(geo(address = unique(mysilly$zip),method="mapbox"),error=function(e) {
+  Sys.sleep(3)
+  geo(address = unique(mysilly$zip),method="mapbox")
+})
 
 
-#mysilly <- left_join(mysilly,sillygeo,by=c("zip"="address"))
-#mysilly <- mysilly %>% 
- # mutate(geoPoint.lat = lat,
- #        geoPoint.lon = long) %>%
- # select(-c("lat","long"))
+mysilly <- left_join(mysilly,sillygeo,by=c("zip"="address"))
+mysilly <- mysilly %>% 
+  mutate(geoPoint.lat = lat,
+         geoPoint.lon = long) %>%
+  select(-c("lat","long"))
 
-#finaldata = rbind(finaldata[is.na(finaldata$geoPoint.lat) == FALSE,],mysilly) 
+finaldata = rbind(finaldata[is.na(finaldata$geoPoint.lat) == FALSE,],mysilly) 
 
 finaldata <- finaldata %>% mutate(
   
