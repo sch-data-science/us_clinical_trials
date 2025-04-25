@@ -1,7 +1,6 @@
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   schedule: # minute hour
-    - cron: '10 16 * * *'
     - cron: '25 5 * * *'
 permissions:
   contents: write
