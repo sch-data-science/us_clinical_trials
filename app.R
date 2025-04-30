@@ -34,7 +34,7 @@ ui <- fluidPage(
                      Data last refreshed ",
                      format(as.Date(trials$LATEST_REFRESH[1]),format = "%m/%d/%Y"),"</small>"))),windowTitle="US Clinical Trials"),
   
-  # Create a new Row in the UI for selectInputs
+
   tabsetPanel(type="tabs",
               tabPanel("Main",
                        fluidRow(
@@ -95,7 +95,7 @@ ui <- fluidPage(
                        ),
                        
                        
-                       # Create a new row for the table.
+                       
                        HTML("Please click the 'Study URL' link below for more details and contact information for that particular study"),
                        HTML("<br>"),
                        div(DT::DTOutput("table"), style = "font-size:80%")
@@ -174,8 +174,7 @@ server <- function(input, output,session) {
                        popup=paste0(MapData()$CITY,", ",MapData()$ntrials," trials")) 
   })
   
-  # A reactive expression that returns the set of zips that are
-  # in bounds right now
+  
   dataInBounds <- reactive({
     if (is.null(input$map_bounds))
       return(data[FALSE,])
