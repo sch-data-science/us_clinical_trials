@@ -13,7 +13,7 @@ trials <- readRDS("trials.RDS")
 
 
 SiteStatus <- c(sort(unique(trials$STATUS)))
-Phase <- c("Phase 1", "Phase 2", "Phase 3", "Phase 4") #c(sort(unique(trials$PHASE)))
+Phase <- c(sort(unique(trials$PHASE)))
 StudyState <- c(sort(unique(trials$STATE)))
 StudyCity <- c(sort(unique(trials$CITYSTATE)))
 
@@ -139,7 +139,7 @@ server <- function(input, output,session) {
     
     data <- data[data$STATUS %in% input$SiteStatus_input & 
                    
-                   str_detect(data$PHASE,paste(input$Phase_input, collapse = "|")) == TRUE &
+                   data$PHASE %in% input$Phase_input &
                    data$STATE %in% input$State_input &
                    data$CITYSTATE %in% input$City_input
                  ,]
